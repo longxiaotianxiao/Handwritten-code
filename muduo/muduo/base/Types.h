@@ -17,7 +17,7 @@ namespace muduo
 
 	//父类向子类转换，需要明确它本来就指向子类
 	template<typename To,typename From>
-	inline down_cast(From* f)
+	inline To down_cast(From* f)
 	{
 #ifdef _DEBUG
 		assert(f == NULL || dynamic_cast<To>(f) != NULL)

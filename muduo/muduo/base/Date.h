@@ -55,9 +55,27 @@ namespace muduo
 			return yearMonthDay().day;
 		}
 
+		int weekDay() const
+		{
+			return (julianDayNumber_ + 1) % kDaysPerWeek;
+		}
 
+		int julianDayNumber() const
+		{
+			return julianDayNumber_;
+		}
 	
 	private:
 		int julianDayNumber_;
 	};
+
+	inline bool operator<(Date x, Date y)
+	{
+		return x.julianDayNumber() < y.julianDayNumber();
+	}
+
+	inline bool operator==(Date x, Date y)
+	{
+		return x.julianDayNumber() == y.julianDayNumber();
+	}
 }
